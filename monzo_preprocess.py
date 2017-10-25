@@ -35,14 +35,14 @@ def main(MONZO_FILE):
 
     # add longitude and latitude colums
     all_postcodes = df["uk_postcode"].dropna().drop_duplicates().tolist()
-    # because the api only allows requests containing 100 postcodes we chunck
-    postcode_chuncks = [all_postcodes[i:i + 100]
+    # because the api only allows requests containing 100 postcodes we chunk
+    postcode_chunks = [all_postcodes[i:i + 100]
                         for i in range(0, len(all_postcodes), 100)]
     # create a lookup dict postcode as keys and lat/long as string value
     lookup = {}
-    for chunck in postcode_chuncks:
+    for chunk in postcode_chunks:
         r = requests.post("https://api.postcodes.io/postcodes",
-                          data={"postcodes": chunck})
+                          data={"postcodes": chunk})
         for res in r.json()['result']:
             if ((res['query'] not in lookup.keys()) and (res['result']
                                                          is not None)):
