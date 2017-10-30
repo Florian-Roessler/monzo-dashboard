@@ -1,3 +1,7 @@
+# Project specific
+monzo_processed.csv
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
