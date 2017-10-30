@@ -37,7 +37,7 @@ def main(MONZO_FILE):
     all_postcodes = df["uk_postcode"].dropna().drop_duplicates().tolist()
     # because the api only allows requests containing 100 postcodes we chunk
     postcode_chunks = [all_postcodes[i:i + 100]
-                        for i in range(0, len(all_postcodes), 100)]
+                       for i in range(0, len(all_postcodes), 100)]
     # create a lookup dict postcode as keys and lat/long as string value
     lookup = {}
     for chunk in postcode_chunks:
